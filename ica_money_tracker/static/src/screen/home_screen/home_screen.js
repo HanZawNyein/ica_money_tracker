@@ -52,7 +52,7 @@ export class HomeScreen extends Component {
     }
 
     editTracker() {
-        this.state.tracker = {id:this.state.tracker.id, amount: this.valueRef.el.value, note: this.noteRef.el.value};
+        this.state.tracker = {id: this.state.tracker.id, amount: this.valueRef.el.value, note: this.noteRef.el.value};
         this.valueRef.el.value = '';
         this.noteRef.el.value = '';
         this.store.editTracker(this.state.tracker);
@@ -63,9 +63,9 @@ export class HomeScreen extends Component {
         this.store.deleteTracker(tracker);
     }
 
-    cancelTracker(){
+    cancelTracker() {
         this.state.tracker = null;
-         this.valueRef.el.value = '';
+        this.valueRef.el.value = '';
         this.noteRef.el.value = '';
     }
 

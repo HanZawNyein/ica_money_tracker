@@ -5,6 +5,7 @@ import {reactive} from "@odoo/owl";
 class MoneyTrackerList {
     nextId = 1;
     trackers = [];
+    connectivity='online';
 
     constructor(trackers) {
         this.trackers = trackers || [];
@@ -14,6 +15,7 @@ class MoneyTrackerList {
 
     addTracker({amount, note}) {
         if (amount) {
+            console.log(`saving data to ${this.connectivity}`)
             const tracker = {
                 id: this.nextId++,
                 amount: parseInt(amount, 10),
