@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="ica_money_tracker.root_navbar_component">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h6>Hello, Money Tracker.</h6>
+                <div t-attf-class="#{state.connectivity ==='online' ?'bg-success':'bg-danger'} text-white">
+                    <h6 class="p-2" t-out="state.connectivity"/>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

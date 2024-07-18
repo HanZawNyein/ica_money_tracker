@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="ica_money_tracker_root" name="Money Tracker" sequence="0">
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="money_tracker_spa_categ" name="SPA" action="ica_money_tracker.ica_money_tracker_spa_action"
+                  sequence="2"/>
+    </menuitem>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="ica_money_tracker.home_screen">
+        <NavbarComponent/>
+        <div class="container mt-3">
+            <div class="d-flex justify-content-between align-items center">
+                <div class="container">
+                    <div class="d-flex justify-content-between align-items center">
+                        <h6>Expenses : <b t-esc="store.getExpense()"/></h6>
+                        <h6>Income : <b t-esc="store.getIncomes()"/></h6>
+                        <h6>Remain : <b t-esc="store.getTotal()">100$</b></h6>
+                    </div>
+                    <div class="container scrollable-container">
+                        <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Note</th>
+                            <th scope="col">Buttons</th>
+                        </tr>
+                      </thead>
+                            <tbody t-foreach="store.trackers" t-as="tracker" t-key="tracker.id">
+                                <tr>
+                                    <th scope="row" t-out="tracker.id"/>
+                                    <td t-out="tracker.date"/>
+                                    <td t-out="tracker.amount"/>
+                                    <td><span  t-if="tracker.note"><span t-out="tracker.note.split(' ').slice(0, 2).join(' ')"/>...</span></td>
+                                    <td class="d-flex justify-content-center">
+                                        <button class="btn bg-warning text-dark m-2"
+                                                t-on-click="()=>this.toEditTracker(tracker)">Edit</button>
+                                        <button class="btn bg-danger text-white m-2" t-on-click="()=>this.deleteTracker(tracker)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    </table>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <input type="text" class="form-control mb-2" placeholder="0.00" t-ref="value"/>
+                    <textarea type="text" class="form-control mb-2" placeholder="note..." t-ref="note"/>
+                    <div class="d-flex justify-content-start align-items center">
+                        <button class="btn bg-dark text-white p-2 mb-2 mt-2 me-2" t-on-click="clickIncomes">Incomes</button>
+                        <button class="btn bg-dark text-white p-2 mb-2 mt-2 me-2"
+                                t-on-click="clickExpenses">Expenses</button>
+                        <button t-if="state.tracker" class="btn bg-warning text-dark p-2 mb-2 mt-2 me-2"
+                                t-on-click="editTracker">Save</button>
+                        <button t-if="state.tracker" class="btn bg-danger text-white p-2 mb-2 mt-2 me-2"
+                                t-on-click="cancelTracker">Cancel</button>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <t t-foreach="['1','2','3','4','5','6','7','8','9','cancel','0','.']" t-as="control_button"
+                           t-key="control_button">
+                          <div class="col">
+                            <div class="card">
+                              <div class="btn card-body fs-1 fw-bolder text-dark btn-outline-dark"
+                                   t-on-click="()=>this.clickNumpad(control_button)"
+                                   t-out="control_button"/>
+                            </div>
+                          </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </t>
+</templates>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ica_money_tracker_spa_action" model="ir.actions.act_url">
+        <field name="name">Money Tracker SPA</field>
+        <field name="target">self</field>
+        <field name="url" eval="'/ica_money_tracker/standalone_app'"/>
+    </record>
+</odoo>
